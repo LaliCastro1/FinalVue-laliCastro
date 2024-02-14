@@ -1,6 +1,6 @@
 <template>
   <div class="logoEmpresa">
-    <img src="../" alt="fotoAlquilerVehiculos">
+    <img src="../assets/alquilerCochesFoto.jpg" alt="fotoAlquilerVehiculos">
   </div>
 </template>
 <style>
