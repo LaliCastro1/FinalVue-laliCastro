@@ -66,5 +66,48 @@
   };
   </script>
 <style>
+.add-modelo {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  max-width: 500px;
+}
 
+h3 {
+  margin-top: 0;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+font-family:Georgia, 'Times New Roman', Times, serif;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button[type="submit"] {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1105ff;
+  color: #fff;
+  cursor: pointer;
+}
 </style>

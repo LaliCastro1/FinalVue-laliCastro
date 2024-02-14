@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-
+import logoEmpresa from '../views/vistaLogoEmpresa.vue'
 import nuevaMarca from '../views/vistaAnadirNuevaMarca.vue' 
 import nuevoModelo from '../views/vistaAnadirNuevoModelo.vue'
 

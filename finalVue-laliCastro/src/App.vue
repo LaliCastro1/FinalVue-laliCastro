@@ -16,22 +16,25 @@ export default {
 <style>
 #nav {
   display: flex;
+  width: 20%;
+  height: 50%;
   text-align: center;
   flex-direction: column;
-  background-color: #242424;
- 
+  background-color: #2f77e4;
   float: left;
-  height: 100%;
+
 }
 
 .nav-link {
+  font-weight: bold;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   text-decoration: none;
   color: white;
+  
 }
 .sub{
-  color: rgb(41, 97, 78);
+  color: rgb(216, 243, 255);
 }
 
 </style>

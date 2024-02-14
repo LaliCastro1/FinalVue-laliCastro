@@ -1,43 +1,65 @@
 {
   "marcas": [
     {
-    "id":1,
-    "nombre":"Alfa Romeo",
-    "origen": "Italia",
-    "anioFundacion": 1910
+      "id": "1",
+      "nombre": "Alfa Romeo",
+      "origen": "Italia",
+      "anioFundacion": 1910
+    },
+    {
+      "id": "837f",
+      "nombre": "nissan",
+      "anioFundacion": 1999,
+      "paisOrigen": "Suiza"
+    },
+    {
+      "id": "3e49",
+      "nombre": "",
+      "anioFundacion": "",
+      "paisOrigen": ""
     }
-    
   ],
   "modelos": [
     {
-      "id":1,
+      "id": "1",
       "idMarca": 1,
       "modelo": "Giulia",
       "extraPorModelo": 12
+    },
+    {
+      "id": "9ad7",
+      "idMarca": 1,
+      "modelo": "lalala",
+      "extraPorModelo": 67
+    },
+    {
+      "id": "12d0",
+      "idMarca": "",
+      "modelo": "dffsefesf",
+      "extraPorModelo": 45
     }
-    
   ],
   "vehiculos": [
     {
-    "id":1,
-    "idModelo": 1,
-    "precioDia": 98,
-    "puertas": 4,
-    "sillaInfantil": false
+      "id": "1",
+      "idModelo": 1,
+      "precioDia": 98,
+      "puertas": 4,
+      "sillaInfantil": false
     }
   ],
   "clientes": [
-      {
-        "id":1,
-        "nombre":"Diego Velázquez",
-        "dni": "76523137I",
-        "alquileres":[
-          {
-            "vehiculo":1,
-            "numDias":4,
-            "fechaInic": "12/11/2022"
-          }
-        ]
-      }
+    {
+      "id": "1",
+      "nombre": "Diego Velázquez",
+      "dni": "76523137I",
+      "alquileres": [
+        {
+          "vehiculo": 1,
+          "numDias": 4,
+          "fechaInic": "12/11/2022"
+        }
+      ]
+    }
   ]
 }

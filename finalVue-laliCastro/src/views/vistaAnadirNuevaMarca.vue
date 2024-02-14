@@ -79,7 +79,7 @@
   }
 
   .btn-submit {
-    background-color: #1c3dc1;
+    background-color: #c1451c;
     color: white;
     border-radius: 4px;
     border: none;
