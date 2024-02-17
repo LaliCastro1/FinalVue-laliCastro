@@ -37,6 +37,18 @@
       "idMarca": "",
       "modelo": "dffsefesf",
       "extraPorModelo": 45
+    },
+    {
+      "id": "0112",
+      "idMarca": "837f",
+      "modelo": "pitita",
+      "extraPorModelo": 123
+    },
+    {
+      "id": "2c77",
+      "idMarca": "1",
+      "modelo": "tikitiki",
+      "extraPorModelo": 6
     }
   ],
   "vehiculos": [

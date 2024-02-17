@@ -5,6 +5,7 @@
         <router-link class="nav-link sub" to="/marcas/nueva-marca">Nueva marca</router-link>
         <router-link class="nav-link sub" to="/modelos/nuevo-modelo">Nuevo Modelo</router-link>
         <router-link class="nav-link" to="/marcas">Marcas</router-link>
+        <router-link class="nav-link sub" to="/modelos">Modelos</router-link>
     </div>
     <router-view />
   </div>

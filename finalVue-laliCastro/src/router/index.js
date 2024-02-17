@@ -4,6 +4,7 @@ import logoEmpresa from '../views/vistaLogoEmpresa.vue'
 import nuevaMarca from '../views/vistaAnadirNuevaMarca.vue' 
 import nuevoModelo from '../views/vistaAnadirNuevoModelo.vue'
 import marcasLista from '../views/vistaMarcas.vue'
+import modelosLista from '../views/vistaModelos.vue'
 
 const routes = [
   {
@@ -15,6 +16,12 @@ const routes = [
     path: '/marcas',
     name: 'marcas',
     component: marcasLista
+  },
+
+  {
+    path: '/modelos',
+    name:'modelos',
+    component: modelosLista
   },
  
   {
