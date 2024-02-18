@@ -5,6 +5,7 @@ import nuevaMarca from '../views/vistaAnadirNuevaMarca.vue'
 import nuevoModelo from '../views/vistaAnadirNuevoModelo.vue'
 import marcasLista from '../views/vistaMarcas.vue'
 import modelosLista from '../views/vistaModelos.vue'
+import vehiculo from '../views/vistaVehiculos.vue'
 
 const routes = [
   {
@@ -33,6 +34,12 @@ const routes = [
     path:'/modelos/nuevo-modelo',
     name:'modelosañadir',
     component: nuevoModelo
+  },
+
+  {
+    path:'/vehiculos',
+    name:'vehiculos',
+    component:vehiculo
   },
 
 ]
