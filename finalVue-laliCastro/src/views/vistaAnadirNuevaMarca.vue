@@ -18,76 +18,85 @@
     </form>
   </div>
 </template>
-  <script>
-  import axios from 'axios';
-  export default {
-    data() {
+
+<script>
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      nombre: "",
+      anioFundacion: "",
+      origen: ""
+    };
+  },
+  computed: {
+    nuevaMarca() {
       return {
-        nombre: "",
-        anioFundacion: "",
-        origen: ""
+        nombre: this.nombre,
+        anioFundacion: this.anioFundacion,
+        paisOrigen: this.origen
       };
-    },
-    computed: {
-      nuevaMarca() {
-        return {
-          nombre: this.nombre,
-          anioFundacion: this.anioFundacion,
-          paisOrigen: this.origen
-        }
-      }
-    },
-    methods: {
-      agregarMarca() {
+    }
+  },
+  methods: {
+    agregarMarca() {
+      if (this.nombre.trim() && this.anioFundacion && this.origen.trim()) {
         axios.post('http://localhost:3000/marcas', this.nuevaMarca)
         .then(response => {
-          console.log(response.data)
+          console.log(response.data);
+          this.nombre = "";
+          this.anioFundacion = "";
+          this.origen = "";
         })
         .catch(error => {
-          console.log(error)
-        })
+          console.log(error);
+        });
+      } else {
+        alert("Todos los campos son obligatorios.");
       }
     }
-  };
-  </script>
-  <style>
-  .new-brand {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
   }
+};
+</script>
 
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
+<style>
+.new-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-  label {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
 
-  input {
-    width: 100%;
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #d6d6d6;
-    border-radius: 4px;
-  }
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
-  .btn-submit {
-    background-color: #c1451c;
-    color: white;
-    border-radius: 4px;
-    border: none;
-    padding: 11px 15px;
-    font-size: 15px;
-  }
+input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+}
 
-  .btn-submit:hover {
-    background-color: #4395e2;
-  }
+.btn-submit {
+  background-color: #c1451c;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  padding: 11px 15px;
+  font-size: 15px;
+}
+
+.btn-submit:hover {
+  background-color: #4395e2;
+}
 </style>

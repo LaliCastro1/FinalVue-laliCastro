@@ -33,8 +33,9 @@ export default {
       axios.get('http://localhost:3000/marcas')
           .then(responseMarcas => {
               this.marcas = responseMarcas.data;
-              
+              //ordena el precio medio de mayor a menor
               this.marcas.sort((a, b) => {
+                //calcula el precio medio de cada marca
                   const precioMedioA = this.calcularPrecioMedioPorMarca(a.id);
                   const precioMedioB = this.calcularPrecioMedioPorMarca(b.id);
                   return precioMedioB - precioMedioA;
@@ -68,9 +69,9 @@ export default {
           this.mostrarListaModelos = true;
       },
       calcularPrecioMedioPorMarca(idMarca) {
-          let sumaPrecio = 0;
-          let contadorVehiculos = 0;
-          let precioMedio = 0;
+          let sumaPrecio = 0;  //acumular la suma de los precios de alquiler por día de todos los vehículos que pertenecen a la marca
+          let contadorVehiculos = 0; //contar el número de vehículos que se encuentran para la marca dada.
+          let precioMedio = 0; //almacenará el precio medio de alquiler por día calculado para los vehículos de la marca.
 
           this.vehiculos.forEach(vehiculo => {
               let idModelo = vehiculo.idModelo;
@@ -92,9 +93,9 @@ export default {
           return precioMedio;
       },
       calcularPrecioMedioPorModelo(idModelo) {
-          let sumaPrecio = 0;
-          let contadorVehiculos = 0;
-          let precioMedio = 0;
+          let sumaPrecio = 0;  //total de los precios de alquiler por día de los vehículos
+          let contadorVehiculos = 0; //número de vehículos que se han encontrado para la marca especificada.
+          let precioMedio = 0; //almacenará el resultado final del cálculo del precio medio de alquiler por día
           this.vehiculos.forEach(vehiculo => {
               let idModeloVehiculo = vehiculo.idModelo;
 
