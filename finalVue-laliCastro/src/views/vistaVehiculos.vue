@@ -99,49 +99,47 @@ axios.get('http://localhost:3000/clientes')
         this.modeloSeleccionado = null;
       } else {
         this.modelosPorMarca = this.modelos.filter(
-          (modelo) => modelo.idMarca === idMarca
+          (modelo) => modelo.idMarca == idMarca
         );
         this.modeloSeleccionado = null;
       }
       this.filtrarVehiculos();
     },
-    filtrarVehiculos() {
-  // Filtrar vehículos por marca seleccionada o tomar todos si no se seleccionó marca
-  let vehiculosFiltradosPorMarca = this.marcaSeleccionada
-    ? this.vehiculos.filter((vehiculo) => {
-        // Encuentra el modelo del vehículo para verificar la marca
-        const modelo = this.modelos.find((modelo) => modelo.id === vehiculo.idModelo);
-        return modelo.idMarca === this.marcaSeleccionada;
-      })
-    : this.vehiculos;
 
-  // Filtrar por modelo seleccionado si hay uno, o preparar lista agregada si no
-  if (this.modeloSeleccionado) {
-    // Filtrar vehículos por modelo seleccionado y mapear a estructura deseada
-    this.modelosConAlquileres = vehiculosFiltradosPorMarca.filter(vehiculo => vehiculo.idModelo === this.modeloSeleccionado)
-      .map((vehiculo) => {
-        // Obtener alquileres para cada vehículo
-        const alquileres = this.obtenerClientesDeVehiculo(vehiculo.id);
-        return {
-          nombre: this.modelos.find((modelo) => modelo.id === vehiculo.idModelo).modelo,
-          precio: vehiculo.precioDia,
-          alquileres: alquileres.join(", "),
-        };
-      });
+    filtrarVehiculos() {
+  let vehiculosFiltradosPorMarca = [];
+  if (this.selectedMarca) {
+    vehiculosFiltradosPorMarca = this.vehiculos.filter((vehiculo) => {
+      const idModelo = vehiculo.idModelo;
+      const modelo = this.modelos.find((modelo) => modelo.id == idModelo);
+      const idMarcaModelo = modelo.idMarca;
+      return idMarcaModelo == this.selectedMarca;
+    });
   } else {
-    // Agregar vehículos por modelo y actualizar lista de modelos con alquileres
+    vehiculosFiltradosPorMarca = this.vehiculos;
+  }
+  if (this.modeloSeleccionado) {
+    this.modelosConAlquileres = vehiculosFiltradosPorMarca.filter((vehiculo) => {
+      return vehiculo.idModelo == this.modeloSeleccionado;
+    }).map((vehiculo) => {
+      const alquileres = this.obtenerClientesDeVehiculo(vehiculo.id);
+      return {
+        nombre: this.modelos.find((modelo) => modelo.id == vehiculo.idModelo).modelo,
+        precio: vehiculo.precioDia,
+        alquileres: alquileres.join(", "),
+      };
+    });
+  } else {
     this.modelosConAlquileres = vehiculosFiltradosPorMarca.reduce((acc, vehiculo) => {
-      const modelo = this.modelos.find((modelo) => modelo.id === vehiculo.idModelo);
-      const modeloIndex = acc.findIndex((item) => item.nombre === modelo.modelo);
-      if (modeloIndex === -1) {
-        // Si el modelo no está en acumulador, agregarlo
+      const modelo = this.modelos.find((modelo) => modelo.id == vehiculo.idModelo);
+      const modeloIndex = acc.findIndex((item) => item.nombre == modelo.modelo);
+      if (modeloIndex == -1) {
         acc.push({
           nombre: modelo.modelo,
           precio: vehiculo.precioDia,
           alquileres: this.obtenerClientesDeVehiculo(vehiculo.id).join(", "),
         });
       } else {
-        // Si ya está, actualizar precio y alquileres si es necesario
         acc[modeloIndex].precio = Math.min(acc[modeloIndex].precio, vehiculo.precioDia);
         acc[modeloIndex].alquileres += `, ${this.obtenerClientesDeVehiculo(vehiculo.id).join(", ")}`;
       }
@@ -150,13 +148,35 @@ axios.get('http://localhost:3000/clientes')
   }
 },
 
+    filtrarModelosConAlquileres() {
+      this.modelos.forEach((modelo) => {
+        let vehiculosModelo = this.vehiculos.filter(
+          (vehiculo) => vehiculo.idModelo == modelo.id
+        );
+        let alquileres = "";
+        vehiculosModelo.forEach((vehiculo) => {
+          alquileres += this.obtenerClientesDeVehiculo(vehiculo.id);
+        });
+        let precio =
+          vehiculosModelo.length > 0 ? vehiculosModelo[0].precioDia : 0;
+        let modeloConAlquileres = {
+          nombre: modelo.modelo,
+          precio: precio,
+          alquileres: alquileres,
+        };
+        this.modelosConAlquileres.push(modeloConAlquileres);
+      });
+
+      return this.modelosConAlquileres;
+    },
+
 
     obtenerClientesDeVehiculo(idVehiculo) {
       const clientesDeVehiculo = [];
 
       this.clientes.forEach((cliente) => {
         const alquileres = cliente.alquileres.filter(
-          (alquiler) => alquiler.vehiculo === idVehiculo
+          (alquiler) => alquiler.vehiculo == idVehiculo
         );
 
         if (alquileres.length > 0) {
@@ -167,40 +187,27 @@ axios.get('http://localhost:3000/clientes')
       return clientesDeVehiculo;
     },
 
-    filtrarModelosConAlquileres() {
+       filtrarModelosConAlquileres() {
+      this.modelos.forEach((modelo) => {
+        let vehiculosModelo = this.vehiculos.filter(
+          (vehiculo) => vehiculo.idModelo == modelo.id
+        );
+        let alquileres = "";
+        vehiculosModelo.forEach((vehiculo) => {
+          alquileres += this.obtenerClientesDeVehiculo(vehiculo.id);
+        });
+        let precio =
+          vehiculosModelo.length > 0 ? vehiculosModelo[0].precioDia : 0;
+        let modeloConAlquileres = {
+          nombre: modelo.modelo,
+          precio: precio,
+          alquileres: alquileres,
+        };
+        this.modelosConAlquileres.push(modeloConAlquileres);
+      });
 
-  this.modelos.forEach((modelo) => {
-    // Filtra los vehículos que corresponden al modelo actual
-    let vehiculosModelo = this.vehiculos.filter(
-      (vehiculo) => vehiculo.idModelo === modelo.id
-    );
-
-    
-    let alquileresClientes = [];
-
-   
-    vehiculosModelo.forEach((vehiculo) => {
-      // Obtiene los nombres de los clientes que han alquilado el vehículo y los añade al array de alquileresClientes
-      alquileresClientes.push(...this.obtenerClientesDeVehiculo(vehiculo.id));
-    });
-
-    // Calcula el precio del modelo basado en el primer vehículo encontrado o lo establece en 0 si no hay vehículos
-    let precio = vehiculosModelo.length > 0 ? vehiculosModelo[0].precioDia : 0;
-
-    // Crea un objeto con la información del modelo, incluyendo nombre, precio, y los alquileres (nombres de clientes)
-    let modeloConAlquileres = {
-      nombre: modelo.modelo, 
-      precio: precio, 
-      alquileres: alquileresClientes.join(", "), 
-    };
-
-    // Añade el objeto del modelo a la lista de modelos con alquileres
-    this.modelosConAlquileres.push(modeloConAlquileres);
-  });
-
-  // Devuelve la lista actualizada de modelos con alquileres
-  return this.modelosConAlquileres;
-},
+      return this.modelosConAlquileres;
+    },
 
   },
 };

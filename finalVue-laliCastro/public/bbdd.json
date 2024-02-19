@@ -52,6 +52,27 @@
       "precioDia": 98,
       "puertas": 4,
       "sillaInfantil": false
+    },
+    {
+      "id": "acc4",
+      "idModelo": "1",
+      "precioDia": 4,
+      "puertas": 3,
+      "sillaInfantil": true
+    },
+    {
+      "id": "3bc6",
+      "idModelo": "1",
+      "precioDia": 77,
+      "puertas": 9,
+      "sillaInfantil": true
+    },
+    {
+      "id": "ceb2",
+      "idModelo": "9ad7",
+      "precioDia": 7,
+      "puertas": 34,
+      "sillaInfantil": true
     }
   ],
   "clientes": [
