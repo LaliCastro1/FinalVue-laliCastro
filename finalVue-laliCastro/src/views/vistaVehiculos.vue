@@ -3,18 +3,18 @@
     <h1 class="titulo">Vehículos</h1>
     <div class="select-container">
       <label>Seleccione una marca:</label>
-      <select class="select" v-model="selectedMarca" @change="cargarModelos(selectedMarca)">
+      <select class="select" v-model="marcaSeleccionada" @change="cargarModelos(marcaSeleccionada)">
         <option value="">Todos los vehículos</option>
-        <option v-for="marca in marcas" :value="marca.id">
+        <option v-for="marca in marcas" :value="marca.id" :key="marca.id">
           {{ marca.nombre }}
         </option>
       </select>
     </div>
     <div class="select-container">
       <label>Seleccione un modelo:</label>
-      <select class="select" v-model="selectedModelo" @change="filtrarVehiculos()" :disabled="selectedMarca === null">
+      <select class="select" v-model="modeloSeleccionado" @change="filtrarVehiculos()" :disabled="marcaSeleccionada === null">
         <option value="">Seleccione un modelo</option>
-        <option v-for="modelo in modelosPorMarca" :value="modelo.id">
+        <option v-for="modelo in modelosPorMarca" :value="modelo.id" :key="modelo.id">
           {{ modelo.modelo }}
         </option>
       </select>
@@ -28,7 +28,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="vehiculo in modelosConAlquileres">
+        <tr v-for="vehiculo in modelosConAlquileres" :key="vehiculo.id">
           <td>{{ vehiculo.nombre }}</td>
           <td>{{ vehiculo.precio }}€</td>
           <td>{{ vehiculo.alquileres }}</td>
@@ -48,8 +48,8 @@ export default {
       modelos: [],
       vehiculos: [],
       clientes: [],
-      selectedMarca: null,
-      selectedModelo: null,
+      marcaSeleccionada: null,
+      modeloSeleccionado: null,
       modelosPorMarca: [],
       modelosConAlquileres: [],
 
@@ -96,29 +96,29 @@ axios.get('http://localhost:3000/clientes')
     cargarModelos(idMarca) {
       if (!idMarca) {
         this.modelosPorMarca = this.modelos;
-        this.selectedModelo = null;
+        this.modeloSeleccionado = null;
       } else {
         this.modelosPorMarca = this.modelos.filter(
           (modelo) => modelo.idMarca === idMarca
         );
-        this.selectedModelo = null;
+        this.modeloSeleccionado = null;
       }
       this.filtrarVehiculos();
     },
     filtrarVehiculos() {
   // Filtrar vehículos por marca seleccionada o tomar todos si no se seleccionó marca
-  let vehiculosFiltradosPorMarca = this.selectedMarca
+  let vehiculosFiltradosPorMarca = this.marcaSeleccionada
     ? this.vehiculos.filter((vehiculo) => {
         // Encuentra el modelo del vehículo para verificar la marca
         const modelo = this.modelos.find((modelo) => modelo.id === vehiculo.idModelo);
-        return modelo.idMarca === this.selectedMarca;
+        return modelo.idMarca === this.marcaSeleccionada;
       })
     : this.vehiculos;
 
   // Filtrar por modelo seleccionado si hay uno, o preparar lista agregada si no
-  if (this.selectedModelo) {
+  if (this.modeloSeleccionado) {
     // Filtrar vehículos por modelo seleccionado y mapear a estructura deseada
-    this.modelosConAlquileres = vehiculosFiltradosPorMarca.filter(vehiculo => vehiculo.idModelo === this.selectedModelo)
+    this.modelosConAlquileres = vehiculosFiltradosPorMarca.filter(vehiculo => vehiculo.idModelo === this.modeloSeleccionado)
       .map((vehiculo) => {
         // Obtener alquileres para cada vehículo
         const alquileres = this.obtenerClientesDeVehiculo(vehiculo.id);
@@ -205,46 +205,41 @@ axios.get('http://localhost:3000/clientes')
   },
 };
 </script>
+
 <style>
-  .vehiculos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
-  }
-
-  .titulo {
-    font-size: 2rem;
-    margin-bottom: 10px;
-  }
-
-  .select-container {
-    margin-bottom: 20px;
-  }
-
-  .select {
-    margin-left: 10px;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    background-color: #f0f0f0;
-    font-size: 1.2rem;
-  }
-
-  .tabla {
-    width: 100%;
-    border-collapse: collapse;
-    text-align: center;
-  }
-
-  .tabla th,
-  .tabla td {
-    padding: 10px;
-    border: 1px solid black;
-  }
-
-  .tabla th {
-    background-color: #f0f0f0;
-    font-size: 1.2rem;
-  }
-</style>
+.vehiculos {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 20px;
+ }
+ .titulo {
+   font-size: 2rem;
+   margin-bottom: 10px;
+ }
+ .select-container {
+   margin-bottom: 20px;
+ }
+ .select {
+   margin-left: 10px;
+   padding: 5px;
+   border-radius: 5px;
+   border: none;
+   background-color: #7bb1d5;
+   font-size: 1.2rem;
+ }
+ .tabla {
+   width: 60%;
+   border-collapse: collapse;
+   text-align: center;
+ }
+ .tabla th,
+ .tabla td {
+   padding: 10px;
+   border: 1px solid black;
+ }
+ .tabla th {
+   background-color: #46c3e9;
+   font-size: 1.2rem;
+ }
+ </style>
