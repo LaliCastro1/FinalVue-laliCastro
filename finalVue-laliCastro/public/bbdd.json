@@ -78,7 +78,7 @@
   "clientes": [
     {
       "id": "1",
-      "nombre": "Diego Velázquez",
+      "nombre": "Diego Velázquezzz",
       "dni": "76523137I",
       "alquileres": [
         {
@@ -87,6 +87,36 @@
           "fechaInic": "12/11/2022"
         }
       ]
+    },
+    {
+      "id": "5179",
+      "nombre": "lali",
+      "dni": "534545435"
+    },
+    {
+      "id": "abb8",
+      "nombre": "fsefes",
+      "dni": "3423422222"
+    },
+    {
+      "id": "43ce",
+      "nombre": "lolo",
+      "dni": "6786787686"
+    },
+    {
+      "id": "fb58",
+      "nombre": "lele",
+      "dni": "342343242423"
+    },
+    {
+      "id": "8585",
+      "nombre": "lali",
+      "dni": "3333333333"
+    },
+    {
+      "id": "a35f",
+      "nombre": "kiki",
+      "dni": "324234234"
     }
   ]
 }

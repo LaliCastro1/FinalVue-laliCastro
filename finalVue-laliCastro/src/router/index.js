@@ -7,6 +7,7 @@ import marcasLista from '../views/vistaMarcas.vue'
 import modelosLista from '../views/vistaModelos.vue'
 import vehiculo from '../views/vistaVehiculos.vue'
 import nuevoVehiculo from '../views/vistaAnadirNuevoVehiculo.vue'
+import clientes from '../views/vistaClientes.vue'
 
 const routes = [
   {
@@ -47,6 +48,12 @@ const routes = [
     path:'/vehiculos/nuevo-vehiculo',
     name:'vehiculosanadir',
     component:nuevoVehiculo
+  },
+
+  {
+    path:'/clientes',
+    name:'clientes',
+    component:clientes
   }
 
 ]
