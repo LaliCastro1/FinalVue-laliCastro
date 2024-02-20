@@ -9,6 +9,7 @@
         <router-link class="nav-link" to="/vehiculos">Vehículos</router-link>
         <router-link class="nav-link sub" to="/vehiculos/nuevo-vehiculo">Nuevo Vehículo</router-link>
         <router-link class="nav-link" to="/clientes">Clientes</router-link>
+        <router-link class="nav-link sub" to="/vehiculos/alquiler">Alquiler</router-link>
     </div>
     <router-view />
   </div>

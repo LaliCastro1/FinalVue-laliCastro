@@ -7,7 +7,7 @@
         <option v-for="marca in marcas" :key="marca.id" :value="marca.id">{{ marca.nombre }}</option>
       </select>
     </div>
-    <table v-if="modeloSeleccionado.length" class="table">
+    <table v-if="selectedModels.length" class="table">
       <thead>
         <tr>
           <th>Modelo</th>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="model in modeloSeleccionado" :key="model.id">
+        <tr v-for="model in selectedModels" :key="model.id">
           <td>{{ model.modelo }}</td>
           <td>{{ precioMedio(model.id) }}€</td>
           <td>
@@ -42,7 +42,7 @@
         modelos: [],
         vehiculos: [],
         marcaSeleccionada: '',
-        modeloSeleccionado: []
+        selectedModels: []
       };
     },
     created() {
@@ -71,14 +71,14 @@
     },
     methods: {
       obtenerModelos() {
-        this.modeloSeleccionado = this.modelos.filter(model => model.idMarca === this.marcaSeleccionada);
+        this.selectedModels = this.modelos.filter(model => model.idMarca === this.marcaSeleccionada);
       },
       precioMedio(id) {
         const vehiculosFiltrados = this.vehiculos.filter(vehiculo => vehiculo.idModelo === id);
         return vehiculosFiltrados.reduce((total, vehiculo) => total + vehiculo.precioDia, 0) / vehiculosFiltrados.length;
       },
       actualizarExtra(id) {
-    const modeloSeleccionado = this.modeloSeleccionado.find(model => model.id === id);
+    const modeloSeleccionado = this.selectedModels.find(model => model.id === id);
     if (modeloSeleccionado.extraPorModelo === 0) {
       axios.patch(`http://localhost:3000/modelos/${id}`, { extraPorModelo: this.nuevoExtra })
         .then(response => {

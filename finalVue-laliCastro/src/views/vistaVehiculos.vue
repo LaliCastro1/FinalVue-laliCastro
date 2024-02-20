@@ -171,21 +171,24 @@ axios.get('http://localhost:3000/clientes')
     },
 
 
-    obtenerClientesDeVehiculo(idVehiculo) {
-      const clientesDeVehiculo = [];
+   obtenerClientesDeVehiculo(idVehiculo) {
+  const clientesDeVehiculo = [];
 
-      this.clientes.forEach((cliente) => {
-        const alquileres = cliente.alquileres.filter(
-          (alquiler) => alquiler.vehiculo == idVehiculo
-        );
+  this.clientes.forEach((cliente) => {
+  
+    if (Array.isArray(cliente.alquileres)) {
+      const alquileres = cliente.alquileres.filter(
+        (alquiler) => alquiler.vehiculo == idVehiculo
+      );
 
-        if (alquileres.length > 0) {
-          clientesDeVehiculo.push(cliente.nombre);
-        }
-      });
+      if (alquileres.length > 0) {
+        clientesDeVehiculo.push(cliente.nombre);
+      }
+    }
+  });
 
-      return clientesDeVehiculo;
-    },
+  return clientesDeVehiculo;
+},
 
        filtrarModelosConAlquileres() {
       this.modelos.forEach((modelo) => {

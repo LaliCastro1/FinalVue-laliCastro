@@ -1,7 +1,7 @@
 <template>
   <div class="add-modelo">
     <h3>Nuevo Modelo</h3>
-    <form @submit.prevent="añadirModelo">
+    <form @submit.prevent="anadirModelo">
       <div class="form-group">
         <label for="marca">Seleccione la marca:</label>
         <select id="marca" v-model="idMarca">
@@ -53,24 +53,17 @@
       
     },
     methods: {
-      añadirModelo() {
-        if (this.idMarca.trim() && this.modelo && this.extraPorModelo.trim()) {
+      anadirModelo() {
         axios.post('http://localhost:3000/modelos',this.nuevoModelo)
         .then(response => {
           console.log(response.data)
-          this.idMarca = "";
-          this.modelo = "";
-          this.extraPorModelo = "";
         })
         .catch(error => {
           console.log(error)
-        });
-      } else {
-        alert("Todos los campos son obligatorios.");
+        })
       }
     }
-  }
-};
+  };
   </script>
 <style>
 .add-modelo {

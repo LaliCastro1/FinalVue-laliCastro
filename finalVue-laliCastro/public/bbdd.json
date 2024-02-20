@@ -11,6 +11,18 @@
       "nombre": "nissan",
       "anioFundacion": 1999,
       "paisOrigen": "Suiza"
+    },
+    {
+      "id": "eaa6",
+      "nombre": "opel",
+      "anioFundacion": 1999,
+      "paisOrigen": "españa"
+    },
+    {
+      "id": "2e9c",
+      "nombre": "mercedes",
+      "anioFundacion": 3,
+      "paisOrigen": "españa"
     }
   ],
   "modelos": [
@@ -43,6 +55,18 @@
       "idMarca": "1",
       "modelo": "tikitiki",
       "extraPorModelo": 6
+    },
+    {
+      "id": "253f",
+      "idMarca": "eaa6",
+      "modelo": "lalala",
+      "extraPorModelo": 44
+    },
+    {
+      "id": "f57a",
+      "idMarca": "2e9c",
+      "modelo": "benz",
+      "extraPorModelo": 3
     }
   ],
   "vehiculos": [
@@ -73,6 +97,20 @@
       "precioDia": 7,
       "puertas": 34,
       "sillaInfantil": true
+    },
+    {
+      "id": "e70b",
+      "idModelo": "253f",
+      "precioDia": 23,
+      "puertas": 7,
+      "sillaInfantil": true
+    },
+    {
+      "id": "bd9c",
+      "idModelo": "f57a",
+      "precioDia": 90,
+      "puertas": 4,
+      "sillaInfantil": true
     }
   ],
   "clientes": [
@@ -91,7 +129,14 @@
     {
       "id": "5179",
       "nombre": "lali",
-      "dni": "534545435"
+      "dni": "534545435",
+      "alquileres": [
+        {
+          "vehiculo": "e70b",
+          "numDias": 43,
+          "fechaInic": "2024-01-31"
+        }
+      ]
     },
     {
       "id": "abb8",
@@ -101,12 +146,51 @@
     {
       "id": "43ce",
       "nombre": "lolo",
-      "dni": "6786787686"
+      "dni": "6786787686",
+      "alquileres": [
+        {
+          "vehiculo": "e70b",
+          "numDias": 3,
+          "fechaInic": "2024-02-09"
+        },
+        {
+          "vehiculo": "e70b",
+          "numDias": 3,
+          "fechaInic": "2024-02-01"
+        },
+        {
+          "vehiculo": "e70b",
+          "numDias": 2,
+          "fechaInic": "2024-02-16"
+        },
+        {
+          "vehiculo": "e70b",
+          "numDias": 45,
+          "fechaInic": "2024-02-18"
+        },
+        {
+          "vehiculo": "bd9c",
+          "numDias": 23,
+          "fechaInic": "2024-02-15"
+        }
+      ]
     },
     {
       "id": "fb58",
       "nombre": "lele",
-      "dni": "342343242423"
+      "dni": "342343242423",
+      "alquileres": [
+        {
+          "vehiculo": "e70b",
+          "numDias": 34,
+          "fechaInic": "2024-02-10"
+        },
+        {
+          "vehiculo": "bd9c",
+          "numDias": 6,
+          "fechaInic": "2024-01-30"
+        }
+      ]
     },
     {
       "id": "8585",
@@ -116,7 +200,14 @@
     {
       "id": "a35f",
       "nombre": "kiki",
-      "dni": "324234234"
+      "dni": "324234234",
+      "alquileres": [
+        {
+          "vehiculo": "e70b",
+          "numDias": 4,
+          "fechaInic": "2024-02-08"
+        }
+      ]
     }
   ]
 }

@@ -8,6 +8,7 @@ import modelosLista from '../views/vistaModelos.vue'
 import vehiculo from '../views/vistaVehiculos.vue'
 import nuevoVehiculo from '../views/vistaAnadirNuevoVehiculo.vue'
 import clientes from '../views/vistaClientes.vue'
+import alquileres from '../views/vistaAlquiler.vue'
 
 const routes = [
   {
@@ -54,8 +55,13 @@ const routes = [
     path:'/clientes',
     name:'clientes',
     component:clientes
-  }
+  },
 
+  {
+    path:'/vehiculos/alquiler',
+    name:'alquileres',
+    component:alquileres
+  }
 ]
 
 const router = createRouter({
