@@ -23,6 +23,24 @@
       "nombre": "mercedes",
       "anioFundacion": 3,
       "paisOrigen": "españa"
+    },
+    {
+      "id": "da2b",
+      "nombre": "coche",
+      "anioFundacion": 1999,
+      "paisOrigen": "españa"
+    },
+    {
+      "id": "1351",
+      "nombre": "ford",
+      "anioFundacion": 3,
+      "paisOrigen": "Francia"
+    },
+    {
+      "id": "5169",
+      "nombre": "lambo",
+      "anioFundacion": 2000,
+      "paisOrigen": "EEUU"
     }
   ],
   "modelos": [
@@ -67,6 +85,24 @@
       "idMarca": "2e9c",
       "modelo": "benz",
       "extraPorModelo": 3
+    },
+    {
+      "id": "7be2",
+      "idMarca": "da2b",
+      "modelo": "paula",
+      "extraPorModelo": 4
+    },
+    {
+      "id": "5bfe",
+      "idMarca": "1351",
+      "modelo": "fiesta",
+      "extraPorModelo": 2
+    },
+    {
+      "id": "5c9d",
+      "idMarca": "5169",
+      "modelo": "murciélago",
+      "extraPorModelo": 7
     }
   ],
   "vehiculos": [
@@ -111,6 +147,48 @@
       "precioDia": 90,
       "puertas": 4,
       "sillaInfantil": true
+    },
+    {
+      "id": "3a85",
+      "idModelo": "7be2",
+      "precioDia": 50,
+      "puertas": 8,
+      "sillaInfantil": true
+    },
+    {
+      "id": "d3bd",
+      "idModelo": "1",
+      "precioDia": 6,
+      "puertas": 3,
+      "sillaInfantil": false
+    },
+    {
+      "id": "7232",
+      "idModelo": "2c77",
+      "precioDia": 7,
+      "puertas": 4,
+      "sillaInfantil": false
+    },
+    {
+      "id": "c4e0",
+      "idModelo": "9ad7",
+      "precioDia": 6,
+      "puertas": 4,
+      "sillaInfantil": true
+    },
+    {
+      "id": "7734",
+      "idModelo": "5bfe",
+      "precioDia": 20,
+      "puertas": 5,
+      "sillaInfantil": true
+    },
+    {
+      "id": "571c",
+      "idModelo": "5c9d",
+      "precioDia": 200,
+      "puertas": 2,
+      "sillaInfantil": false
     }
   ],
   "clientes": [
@@ -123,6 +201,11 @@
           "vehiculo": 1,
           "numDias": 4,
           "fechaInic": "12/11/2022"
+        },
+        {
+          "vehiculo": "bd9c",
+          "numDias": 4,
+          "fechaInic": "2024-02-02"
         }
       ]
     },
@@ -134,6 +217,26 @@
         {
           "vehiculo": "e70b",
           "numDias": 43,
+          "fechaInic": "2024-01-31"
+        },
+        {
+          "vehiculo": "e70b",
+          "numDias": 3,
+          "fechaInic": "2024-02-05"
+        },
+        {
+          "vehiculo": "7734",
+          "numDias": 4,
+          "fechaInic": "2024-02-06"
+        },
+        {
+          "vehiculo": "7734",
+          "numDias": 4,
+          "fechaInic": "2024-02-07"
+        },
+        {
+          "vehiculo": "7734",
+          "numDias": 3,
           "fechaInic": "2024-01-31"
         }
       ]
@@ -205,6 +308,33 @@
         {
           "vehiculo": "e70b",
           "numDias": 4,
+          "fechaInic": "2024-02-08"
+        },
+        {
+          "vehiculo": "7232",
+          "numDias": 5,
+          "fechaInic": "2024-02-08"
+        }
+      ]
+    },
+    {
+      "id": "ef8f",
+      "nombre": "pepe",
+      "dni": "5555555",
+      "alquileres": [
+        {
+          "vehiculo": "3a85",
+          "numDias": 4,
+          "fechaInic": "2024-02-05"
+        },
+        {
+          "vehiculo": "3a85",
+          "numDias": 4,
+          "fechaInic": "2024-02-09"
+        },
+        {
+          "vehiculo": "571c",
+          "numDias": 2,
           "fechaInic": "2024-02-08"
         }
       ]

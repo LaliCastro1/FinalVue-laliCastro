@@ -1,14 +1,15 @@
 <template>
   <div class="logoEmpresa">
-    <img src="../assets/alquiler-coches-fin-de-semana.jpeg" alt="fotoAlquilerVehiculos">
+    <img src="../assets/alquilarCoche.png" alt="fotoAlquilerVehiculos">
   </div>
 </template>
 <style>
 
 .logoEmpresa {
-  width: 100vw;
-  height: 110vh;
+  width: auto;
+  height: auto;
   display: flex;
+  margin-top: 300px;
 justify-content: center;
 }
 

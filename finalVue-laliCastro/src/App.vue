@@ -28,8 +28,11 @@ export default {
   flex-direction: column;
   background-color: #2f77e4;
   float: left;
+  border: 3px solid rgb(7, 195, 241);
 
 }
+
+
 
 .nav-link {
   font-weight: bold;
